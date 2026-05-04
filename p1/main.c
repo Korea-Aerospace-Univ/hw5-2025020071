@@ -2,23 +2,24 @@
 
 int main(void)
 {
-    int N, m = 0;
+    int N;
+    bool found = false;
     
     scanf("%d", &N);
     
-    for(int i=1; i*900<=N; i++) {
-        for(int j=2; j*750<=N; j+=2) {
-            for(int k=1; k*200<=N; k++) {
+    for(int i=1; i<=N/900; i++) {
+        for(int j=2; j<=N/750; j+=2) {
+            for(int k=1; k<=N/200; k++) {
                 if (900*i+750*j+200*k == N) {
                     if (k<i || k<j) {
                         printf("%d %d %d\n", i, j, k);
-                        m = 1;
+                        found = true;
                     }
                 }
             }
         }
     }
-    if (m=0) 
+    if (!found) 
         printf("none");
         
     return 0;
